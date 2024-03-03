@@ -3,6 +3,22 @@
 
     },
 
+    doInit : function(component, event, helper) {
+        var getListaRegistros = component.get("c.getListaRegistros");
+        
+        getListaRegistros.setCallback(this, function(response){
+            var state = response.getState();
+            if(state === "SUCCESS"){
+                var response = response.getReturnValue(); 
+                component.set("v.listaBoxeadoresBD",response)
+                console.log('lo que devuelve la llamada a la base para recuperar ' + response);
+            }else{
+                console.log(response.getError());
+            }
+        });
+        $A.enqueueAction(getListaRegistros);
+    },
+
     handleGuardarBoxeadorEvent : function(component, event, helper) {
         // console.log('Llega a: handleGuardarBoxeadorEvent');
         var nombre = event.getParam("nombre");
@@ -40,5 +56,39 @@
         
         component.set("v.listaBoxeadores", listaBoxeadores);
         //console.log('listaBoxeadores: ' + component.get("v.listaBoxeadores[0].nombre"));
+    },
+
+    guardarBoxeador : function(component, event, helper) {
+        var listaBoxeadoresSesion = component.get("v.listaBoxeadores")
+        var insertarBoxeador = component.get("c.insertarBoxeador");
+
+        for (var i = 0; i < listaBoxeadoresSesion.length; i++) { //Inserto cada string del array en la base de datos
+            var nom = ("Boxeador" + i+1);
+
+            insertarBoxeador.setCallback(this, function(response){
+            var state = response.getState();
+            if(state === "SUCCESS"){
+                console.log("Success");
+            }else{
+                console.log(response.getError());
+            }
+            });
+            insertarBoxeador.setParams({ //Pasamos el valor del atributo str al metodo insertStr del controlador de Apex
+                "numBoxeador": nom,
+                "nombre": listaBoxeadoresSesion[i].nombre,
+                "apellido": listaBoxeadoresSesion[i].apellido,
+                "apodo": listaBoxeadoresSesion[i].apodo,
+                "edad": listaBoxeadoresSesion[i].edad,
+                "peso": listaBoxeadoresSesion[i].peso,
+                "altura": listaBoxeadoresSesion[i].altura
+            });
+            
+            $A.enqueueAction(insertarBoxeador); //Metemos en la cola de acciones el metodo insertStr del controlador de Apex
+        }
+    },
+
+
+    borrarBoxeadores : function(component, event, helper) {
+        
     }
 })
