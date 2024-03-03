@@ -35,6 +35,8 @@
     <div>
         <lightning:button label="Guardar Pelea en BD" onclick="{!c.guardarPelea}" />
         <lightning:button label="Borrar Peleas en BD" onclick="{!c.borrarPeleas}" />
+        <lightning:button label="Listar Peleas por consola" onclick="{!c.listarPeleas}" />
+
     </div>
     <br></br>
 

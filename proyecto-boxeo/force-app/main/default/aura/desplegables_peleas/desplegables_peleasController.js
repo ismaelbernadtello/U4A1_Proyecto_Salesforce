@@ -70,6 +70,21 @@
         });
 
         $A.enqueueAction(borrarPeleasC);
+    },
+
+    listarPeleas : function(component, event, helper) {
+        var listaPeleasConsola = component.get("v.listaPeleas");
+
+        for (var i = 0; i < listaPeleasConsola.length; i++) {
+            (function(index) {
+                setTimeout(function() {
+                    console.log('Pelea ' + (index + 1) + ' de la lista : ' 
+                                                                        + ' Esquina Azul: ' + listaPeleasConsola[index].BillingStreet
+                                                                        + ' Esquina Roja: ' + listaPeleasConsola[index].BillingCity
+                                                                        + ' Resultado: ' + listaPeleasConsola[index].BillingState); 
+                }, 1000 * (index + 1)); // Esperar 1 segundo entre cada console.log
+            })(i);
+        }
     }
 
 })

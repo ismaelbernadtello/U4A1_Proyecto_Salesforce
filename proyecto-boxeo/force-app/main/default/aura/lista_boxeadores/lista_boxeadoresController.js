@@ -20,7 +20,6 @@
     },
     
     handleGuardarBoxeadorEvent : function(component, event, helper) {
-        // console.log('Llega a: handleGuardarBoxeadorEvent');
         var nombre = event.getParam("nombre");
         var apellido = event.getParam("apellido");
         var apodo = event.getParam("apodo");
@@ -36,7 +35,6 @@
             "peso": peso,
             "altura": altura
         };
-        //console.log('boxeador: ' + boxeador.nombre);
         var listaBoxeadores = component.get("v.listaBoxeadores");
         
         if(listaBoxeadores.length == 0){ //Si es el primer objeto que se inserta en la lista, este se añade a la posición 0
@@ -99,7 +97,7 @@
             (function(index) {
                 setTimeout(function() {
                     console.log('Boxeador ' + (index + 1) + ' de la lista : ' 
-                                                                        + 'Nombre: ' + listaBoxeadoresConsola[index].BillingStreet 
+                                                                        + ' Nombre: ' + listaBoxeadoresConsola[index].BillingStreet 
                                                                         + ' Apellido: ' + listaBoxeadoresConsola[index].BillingCity 
                                                                         + ' Apodo: ' + listaBoxeadoresConsola[index].BillingState 
                                                                         + ' Edad: ' + listaBoxeadoresConsola[index].BillingCountry 
@@ -109,5 +107,4 @@
             })(i);
         }
     }
-    
 })
