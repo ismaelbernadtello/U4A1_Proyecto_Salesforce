@@ -8,18 +8,37 @@
 
     <h1>Ingresa los datos del boxeador que quieres registrar:</h1>
     <br></br>
-    <lightning:input label="Nombre" name="nombre" value="{!v.nombre}" />
-    <lightning:input label="Apellido" name="apellido" value="{!v.apellido}" />
-    <lightning:input label="Apodo" name="apodo" value="{!v.apodo}" />
+    <table class="my-table">
+        <tbody>
+            <tr>
+                <td data-label="Nombre" style="padding: 10pt;">
+                    <lightning:input label="Nombre" name="nombre" value="{!v.nombre}" />
+                </td>
+                <td data-label="Apellido" style="padding: 10pt;">
+                    <lightning:input label="Apellido" name="apellido" value="{!v.apellido}" />
+                </td>
+                <td data-label="Apodo" style="padding: 10pt;">
+                    <lightning:input label="Apodo" name="apodo" value="{!v.apodo}" />
+                </td>
+                <td data-label="Edad" style="padding: 10pt;">
+                    <lightning:input label="Edad" name="edad" value="{!v.edad}" pattern="[0-9]*"
+                        messageWhenPatternMismatch="Solo se permiten números" />
+                </td>
+                <td data-label="Altura en cm" style="padding: 10pt;">
+                    <lightning:input label="Altura en cm" name="altura" type="integer" value="{!v.altura}"
+                        pattern="[0-9]*" messageWhenPatternMismatch="Solo se permiten números" />
+                </td>
+                <td data-label="Peso en kg" style="padding: 10pt;">
+                    <lightning:input label="Peso en kg" name="peso" type="integer" value="{!v.peso}" pattern="[0-9]*"
+                        messageWhenPatternMismatch="Solo se permiten números" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6" style="text-align:center">
+                    <lightning:button label="Guardar Boxeador" onclick="{!c.guardarBoxeador}" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-    <lightning:input label="Edad" name="edad" value="{!v.edad}" pattern="[0-9]*"
-        messageWhenPatternMismatch="Solo se permiten números" />
-
-    <lightning:input label="Altura en cm" name="altura" type="integer" value="{!v.altura}" pattern="[0-9]*"
-        messageWhenPatternMismatch="Solo se permiten números" />
-
-    <lightning:input label="Peso en kg" name="peso" type="integer" value="{!v.peso}" pattern="[0-9]*"
-        messageWhenPatternMismatch="Solo se permiten números" />
-
-    <lightning:button label="Guardar Boxeador" onclick="{!c.guardarBoxeador}" />
 </aura:component>

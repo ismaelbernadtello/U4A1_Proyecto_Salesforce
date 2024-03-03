@@ -1,4 +1,65 @@
 <aura:component>
     <!-- Event handler for guardarBoxeadorEvent -->
     <aura:handler event="c:guardarBoxeadorEvent" action="{!c.handleGuardarBoxeadorEvent}" />
+
+    <aura:attribute name="listaBoxeadores" type="Object[]" />
+    <aura:attribute name="listaBoxeadoresBD" type="Object[]" />
+
+    <hr>
+    </hr>
+    <p>Boxeadores en sesion:</p>
+    <table style="border-spacing: 10px;">
+        <tbody>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Apodo</th>
+                <th>Edad</th>
+                <th>Altura</th>
+                <th>Peso</th>
+            </tr>
+            <aura:iteration items="{!v.listaBoxeadores}" var="boxeador"> <!--Iteramos entre el array con los strings-->
+                <tr>
+                    <td>{!boxeador.nombre}</td>
+                    <td>{!boxeador.apellido}</td>
+                    <td>{!boxeador.apodo}</td>
+                    <td>{!boxeador.edad}</td>
+                    <td>{!boxeador.altura}</td>
+                    <td>{!boxeador.peso}</td>
+                </tr>
+            </aura:iteration>
+        </tbody>
+    </table>
+    <br></br>
+    <div>
+        <lightning:button label="Guardar Boxeadores en BD" onclick="{!c.save}" />
+        <lightning:button label="Borrar Boxeadores en BD" onclick="{!c.clear}"/>
+    </div>
+    <br></br>
+    <p>Boxeadores en BD:</p>
+    <table style="border-spacing: 10px;">
+        <tbody>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Apodo</th>
+                <th>Edad</th>
+                <th>Altura</th>
+                <th>Peso</th>
+            </tr>
+            <aura:iteration items="{!v.listaBoxeadoresBD}" var="boxeador">
+                <!--Iteramos entre el array con los strings-->
+                <tr>
+                    <td>{!boxeador.nombre}</td>
+                    <td>{!boxeador.apellido}</td>
+                    <td>{!boxeador.apodo}</td>
+                    <td>{!boxeador.edad}</td>
+                    <td>{!boxeador.altura}</td>
+                    <td>{!boxeador.peso}</td>
+                </tr>
+            </aura:iteration>
+        </tbody>
+    </table>
+
+
 </aura:component>
