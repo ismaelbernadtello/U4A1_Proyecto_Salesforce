@@ -55,10 +55,10 @@
                 <tr>
                     <td>{!boxeador.BillingStreet}</td>
                     <td>{!boxeador.BillingCity}</td>
-                    <td>{!boxeador.apodo}</td>
-                    <td>{!boxeador.edad}</td>
-                    <td>{!boxeador.altura}</td>
-                    <td>{!boxeador.peso}</td>
+                    <td>{!boxeador.BillingState}</td>
+                    <td>{!boxeador.BillingCountry}</td>
+                    <td>{!boxeador.ShippingStreet}</td>
+                    <td>{!boxeador.ShippingCountry}</td>
                 </tr>
             </aura:iteration>
         </tbody>

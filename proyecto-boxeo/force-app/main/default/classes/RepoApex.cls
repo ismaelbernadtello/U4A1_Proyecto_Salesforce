@@ -8,7 +8,11 @@ public with sharing class RepoApex {
         Account acc = new Account(Name = numBoxeador,
                                     BillingStreet = nombre,
                                     BillingCity = apellido,
-                                    BillingState = apodo);
+                                    BillingState = apodo,
+                                    BillingCountry = edad,
+                                    ShippingStreet = peso,
+                                    ShippingCountry = altura                                           
+                                    );
         try{
             insert acc;
         }
@@ -31,7 +35,7 @@ public with sharing class RepoApex {
     @AuraEnabled /*Método que obtiene los registros de la base de datos.*/
     public static List<Account> getListaRegistros(){
         try {
-            Account[] accounts = [SELECT Name, BillingStreet, BillingCity, BillingState, BillingCountry, BillingPostalCode, BillingLatitude
+            Account[] accounts = [SELECT Name, BillingStreet, BillingCity, BillingState, BillingCountry, ShippingStreet, ShippingCountry
                                     FROM Account 
                                     WHERE Name LIKE 'Boxeador%'];
             return accounts;
