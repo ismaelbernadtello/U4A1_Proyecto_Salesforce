@@ -50,21 +50,16 @@
         component.set("v.listaBoxeadores", listaBoxeadores);
     },
 
-    guardarBoxeador : function(component, event, helper) { //Funcion que guarda la lista de boxeadores en la BD
-        var listaBoxeadoresSesion = component.get("v.listaBoxeadores")
-        var insertarBoxeador = component.get("c.insertarBoxeador");
-
+    guardarBoxeador: function(component, event, helper) {
+        var listaBoxeadoresSesion = component.get("v.listaBoxeadores");
+    
         for (var i = 0; i < listaBoxeadoresSesion.length; i++) {
-            var nom = ("Boxeador" + Math.floor(Math.random() * 1000) + 1);
-
-            insertarBoxeador.setCallback(this, function(response){
-            var state = response.getState();
-            if(state === "SUCCESS"){
-                console.log("Success");
-            }else{
-                console.log(response.getError());
-            }
-            });
+            var nom = "Boxeador" + Math.floor(Math.random() * 1000) + 1;
+            
+            // Crear una nueva acción cada vez
+            var insertarBoxeador = component.get("c.insertarBoxeador");
+    
+            // Configurar los parámetros para cada iteración
             insertarBoxeador.setParams({
                 "numBoxeador": nom,
                 "nombre": listaBoxeadoresSesion[i].nombre,
@@ -74,10 +69,24 @@
                 "peso": listaBoxeadoresSesion[i].peso,
                 "altura": listaBoxeadoresSesion[i].altura
             });
+    
+            // Definir la función de devolución de llamada para cada acción
+            insertarBoxeador.setCallback(this, function(response) {
+                var state = response.getState();
+                if (state === "SUCCESS") {
+                    console.log("Success");
+                } else {
+                    console.log(response.getError());
+                }
+            });
+    
+            // Encolar la acción para cada iteración
             $A.enqueueAction(insertarBoxeador);
         }
-        component.set("v.listaBoxeadores", []); //Vaciamos la lista de boxeadores
+    
+        component.set("v.listaBoxeadores", []); // Vaciar la lista de boxeadores
     },
+    
 
     borrarBoxeadores : function(component, event, helper) { //Funcion que borra todos los boxeadores de la BD
         var borrarBoxeadores = component.get("c.borrarTodosLosBoxeadores");

@@ -40,5 +40,13 @@
         + ' altura: ' + component.get("v.altura"));
 
         evt.fire(); //Lanzamos el evento
+
+        //Poner los campos en blanco
+        component.set("v.nombre", "");
+        component.set("v.apellido", "");
+        component.set("v.apodo", "");
+        component.set("v.edad", "");
+        component.set("v.peso", "");
+        component.set("v.altura", "");
     }
 })
