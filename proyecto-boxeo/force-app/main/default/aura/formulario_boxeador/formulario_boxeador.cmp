@@ -1,0 +1,20 @@
+<aura:component>
+
+    <h1>Ingresa los datos del boxeador que quieres registrar:</h1>
+    <br></br>
+    <lightning:input label="Nombre" name="nombre" value="{!v.nombre}" />
+    <lightning:input label="Apellido" name="apellido" value="{!v.apellido}" />
+    <lightning:input label="Apodo" name="apodo" value="{!v.apodo}" />
+
+    <lightning:input label="Edad" name="edad" value="{!v.edad}" pattern="[0-9]*"
+        messageWhenPatternMismatch="Solo se permiten números" />
+
+    <lightning:input label="Altura en cm" name="altura" type="integer" value="{!v.altura}" pattern="[0-9]*"
+        messageWhenPatternMismatch="Solo se permiten números" />
+
+    <lightning:input label="Peso en kg" name="peso" type="integer" value="{!v.peso}" pattern="[0-9]*"
+        messageWhenPatternMismatch="Solo se permiten números" />
+
+    <lightning:button label="Guardar Boxeador" onclick="{!c.guardarBoxeador}" />
+
+</aura:component>

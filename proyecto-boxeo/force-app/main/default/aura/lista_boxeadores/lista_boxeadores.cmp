@@ -1,0 +1,4 @@
+<aura:component>
+    <!-- Event handler for guardarBoxeadorEvent -->
+    <aura:handler event="c:guardarBoxeadorEvent" action="{!c.handleGuardarBoxeadorEvent}" />
+</aura:component>

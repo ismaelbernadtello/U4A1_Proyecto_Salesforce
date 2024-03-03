@@ -1,3 +1,4 @@
 <aura:application>
-    <p>La app funciona</p>
+    <c:formulario_boxeador />
+    <c:lista_boxeadores />
 </aura:application>

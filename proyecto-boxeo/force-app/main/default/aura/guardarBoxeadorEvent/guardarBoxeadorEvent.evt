@@ -1,0 +1,9 @@
+<aura:event type="APPLICATION" description="Event template">
+<!-- Pasamos los datos del boxeador al otro componente -->
+<aura:attribute name="nombre" type="String" />
+<aura:attribute name="apellido" type="String" />
+<aura:attribute name="apodo" type="String" />
+<aura:attribute name="edad" type="Integer" />
+<aura:attribute name="peso" type="Integer" />
+<aura:attribute name="altura" type="Integer" />
+</aura:event>
