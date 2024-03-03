@@ -11,7 +11,7 @@
 
     <hr></hr>
 
-    <h1>Ingresa los datos del boxeador que quieres registrar:</h1>
+    <h1>Ingresa los datos de la pelea que quieres registrar:</h1>
     <br></br>
     <table class="my-table">
         <tbody>
@@ -61,7 +61,7 @@
         <tbody>
             <tr>
                 <th>Esquina Azul</th>
-                <th>Esquina Azul</th>
+                <th>Esquina Roja</th>
                 <th>Ganador</th>
             </tr>
             <aura:iteration items="{!v.listaPeleas}" var="pelea">
