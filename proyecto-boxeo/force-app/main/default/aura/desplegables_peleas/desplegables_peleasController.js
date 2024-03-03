@@ -4,6 +4,7 @@
     },
 
     doInit : function(component, event, helper) {
+        //Cargo la lista de boxeadores con los registros de la BD
         var getListaRegistros = component.get("c.getListaRegistros");
         
         getListaRegistros.setCallback(this, function(response){
@@ -18,7 +19,7 @@
         });
         $A.enqueueAction(getListaRegistros);
 
-
+        //Cargo la lista de peleas con los registros de la BD
         var getListaPeleas = component.get("c.getListaPeleas");
 
         getListaPeleas.setCallback(this, function(response){
@@ -36,7 +37,7 @@
 
     },
 
-    guardarPelea : function(component, event, helper) {
+    guardarPelea : function(component, event, helper) { //Funcion que guarda la pelea en la BD
         var insertarPelea = component.get("c.insertarPelea");
 
         insertarPelea.setCallback(this, function(response){
@@ -57,7 +58,7 @@
         $A.enqueueAction(insertarPelea);
     },
 
-    borrarPeleas : function(component, event, helper) {
+    borrarPeleas : function(component, event, helper) { //Funcion que borra todas las peleas de la BD
         var borrarPeleasC = component.get("c.borrarTodasLasPeleas");
 
         borrarPeleasC.setCallback(this, function(response){
@@ -72,7 +73,7 @@
         $A.enqueueAction(borrarPeleasC);
     },
 
-    listarPeleas : function(component, event, helper) {
+    listarPeleas : function(component, event, helper) { //Funcion que muestra por consola las peleas
         var listaPeleasConsola = component.get("v.listaPeleas");
 
         for (var i = 0; i < listaPeleasConsola.length; i++) {

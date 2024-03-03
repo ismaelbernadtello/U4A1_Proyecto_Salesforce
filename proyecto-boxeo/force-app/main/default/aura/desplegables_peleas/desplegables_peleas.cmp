@@ -9,37 +9,53 @@
 
     <aura:attribute name="listaPeleas" type="Object[]" />
 
-    <hr>
-    </hr>
+    <hr></hr>
 
-    <lightning:select name="peleador1" label="Esquina Azul" value="{!v.boxeador1}">
-        <option value="">Selecciona el peleador 1</option>
-        <aura:iteration items="{!v.listaBoxeadoresBD}" var="boxeador">
-            <option value="{!boxeador.BillingStreet}">{!boxeador.BillingStreet}</option>
-        </aura:iteration>
-    </lightning:select>
-
-    <lightning:select name="peleador2" label="Esquina Roja" value="{!v.boxeador2}">
-        <option value="">Selecciona el peleador 2</option>
-        <aura:iteration items="{!v.listaBoxeadoresBD}" var="boxeador">
-            <option value="{!boxeador.BillingStreet}">{!boxeador.BillingStreet}</option>
-        </aura:iteration>
-    </lightning:select>
-
-    <lightning:select name="opciones" label="Ganador" value="{!v.ganador}">
-        <option value="">Selecciona el ganador</option>
-        <option value="Esquina Azul">{!v.boxeador1}</option>
-        <option value="Esquina Roja">{!v.boxeador2}</option>
-    </lightning:select>
-
-    <div>
-        <lightning:button label="Guardar Pelea en BD" onclick="{!c.guardarPelea}" />
-        <lightning:button label="Borrar Peleas en BD" onclick="{!c.borrarPeleas}" />
-        <lightning:button label="Listar Peleas por consola" onclick="{!c.listarPeleas}" />
-
-    </div>
+    <h1>Ingresa los datos del boxeador que quieres registrar:</h1>
     <br></br>
-
+    <table class="my-table">
+        <tbody>
+            <tr>
+                <td data-label="Nombre" style="padding: 10pt;">
+                    <lightning:select name="peleador1" label="Esquina Azul" value="{!v.boxeador1}">
+                        <option value="">Selecciona el peleador 1</option>
+                        <aura:iteration items="{!v.listaBoxeadoresBD}" var="boxeador">
+                            <option value="{!boxeador.BillingStreet}">{!boxeador.BillingStreet}</option>
+                        </aura:iteration>
+                    </lightning:select>
+                </td>
+                <td data-label="Apellido" style="padding: 10pt;">
+                    <lightning:select name="peleador2" label="Esquina Roja" value="{!v.boxeador2}">
+                        <option value="">Selecciona el peleador 2</option>
+                        <aura:iteration items="{!v.listaBoxeadoresBD}" var="boxeador">
+                            <option value="{!boxeador.BillingStreet}">{!boxeador.BillingStreet}</option>
+                        </aura:iteration>
+                    </lightning:select>
+                </td>
+                <td data-label="Apodo" style="padding: 10pt;">
+                    <lightning:select name="opciones" label="Ganador" value="{!v.ganador}">
+                        <option value="">Selecciona el ganador</option>
+                        <option value="Esquina Azul">{!v.boxeador1}</option>
+                        <option value="Esquina Roja">{!v.boxeador2}</option>
+                    </lightning:select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6" style="text-align:center">
+                    <div style="margin-right: 10px; display: inline-block;">
+                        <lightning:button label="Guardar Pelea en BD" onclick="{!c.guardarPelea}" />
+                    </div>
+                    <div style="margin-right: 10px; display: inline-block;">
+                        <lightning:button label="Borrar Peleas en BD" onclick="{!c.borrarPeleas}" />
+                    </div>
+                    <div style="display: inline-block;">
+                        <lightning:button label="Listar Peleas por consola" onclick="{!c.listarPeleas}" />
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br></br>
     <p>Peleas en BD:</p>
     <table style="border-spacing: 10px;">
         <tbody>
@@ -57,5 +73,4 @@
             </aura:iteration>
         </tbody>
     </table>
-
 </aura:component>

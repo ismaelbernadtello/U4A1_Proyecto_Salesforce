@@ -4,6 +4,7 @@
     },
 
     doInit : function(component, event, helper) {
+        //Cargo la lista de boxeadores con los registros de la BD
         var getListaRegistros = component.get("c.getListaRegistros");
         
         getListaRegistros.setCallback(this, function(response){
@@ -19,7 +20,7 @@
         $A.enqueueAction(getListaRegistros);
     },
     
-    handleGuardarBoxeadorEvent : function(component, event, helper) {
+    handleGuardarBoxeadorEvent : function(component, event, helper) { //Funcion que recibe los datos del boxeador
         var nombre = event.getParam("nombre");
         var apellido = event.getParam("apellido");
         var apodo = event.getParam("apodo");
@@ -27,7 +28,8 @@
         var peso = event.getParam("peso");
         var altura = event.getParam("altura");
 
-        var boxeador = {
+        //Creamos un objeto con los datos del boxeador
+        var boxeador = { 
             "nombre": nombre,
             "apellido": apellido,
             "apodo": apodo,
@@ -37,7 +39,8 @@
         };
         var listaBoxeadores = component.get("v.listaBoxeadores");
         
-        if(listaBoxeadores.length == 0){ //Si es el primer objeto que se inserta en la lista, este se añade a la posición 0
+        //Si la lista esta vacia, insertamos el boxeador en la primera posicion del array. Si no, lo insertamos al final
+        if(listaBoxeadores.length == 0){
             listaBoxeadores[0] = boxeador;
         }
         else{
@@ -47,11 +50,11 @@
         component.set("v.listaBoxeadores", listaBoxeadores);
     },
 
-    guardarBoxeador : function(component, event, helper) {
+    guardarBoxeador : function(component, event, helper) { //Funcion que guarda la lista de boxeadores en la BD
         var listaBoxeadoresSesion = component.get("v.listaBoxeadores")
         var insertarBoxeador = component.get("c.insertarBoxeador");
 
-        for (var i = 0; i < listaBoxeadoresSesion.length; i++) { //Inserto cada string del array en la base de datos
+        for (var i = 0; i < listaBoxeadoresSesion.length; i++) {
             var nom = ("Boxeador" + Math.floor(Math.random() * 1000) + 1);
 
             insertarBoxeador.setCallback(this, function(response){
@@ -62,7 +65,7 @@
                 console.log(response.getError());
             }
             });
-            insertarBoxeador.setParams({ //Pasamos el valor del atributo str al metodo insertStr del controlador de Apex
+            insertarBoxeador.setParams({
                 "numBoxeador": nom,
                 "nombre": listaBoxeadoresSesion[i].nombre,
                 "apellido": listaBoxeadoresSesion[i].apellido,
@@ -71,12 +74,12 @@
                 "peso": listaBoxeadoresSesion[i].peso,
                 "altura": listaBoxeadoresSesion[i].altura
             });
-            $A.enqueueAction(insertarBoxeador); //Metemos en la cola de acciones el metodo insertStr del controlador de Apex
+            $A.enqueueAction(insertarBoxeador);
         }
         component.set("v.listaBoxeadores", []); //Vaciamos la lista de boxeadores
     },
 
-    borrarBoxeadores : function(component, event, helper) {
+    borrarBoxeadores : function(component, event, helper) { //Funcion que borra todos los boxeadores de la BD
         var borrarBoxeadores = component.get("c.borrarTodosLosBoxeadores");
 
         borrarBoxeadores.setCallback(this, function(response){
@@ -90,7 +93,7 @@
         $A.enqueueAction(borrarBoxeadores);
     },
 
-    listarBoxeadores : function(component, event, helper) {
+    listarBoxeadores : function(component, event, helper) { //Funcion que muestra por consola los boxeadores
         var listaBoxeadoresConsola = component.get("v.listaBoxeadoresBD");
 
         for (var i = 0; i < listaBoxeadoresConsola.length; i++) {

@@ -1,5 +1,5 @@
 <aura:component controller="RepoApex">
-    <!-- Event handler for guardarBoxeadorEvent -->
+    <!-- Event handler para recibir los datos del formulario desde el componente formulario_boxeador -->
     <aura:handler event="c:guardarBoxeadorEvent" action="{!c.handleGuardarBoxeadorEvent}" />
 
     <!--Handler que carga los boxeadores grabados en la base de datos-->
@@ -8,8 +8,7 @@
     <aura:attribute name="listaBoxeadores" type="Object[]" />
     <aura:attribute name="listaBoxeadoresBD" type="Object[]" />
 
-    <hr>
-    </hr>
+    <hr></hr>
     <p>Boxeadores en sesion:</p>
     <table style="border-spacing: 10px;">
         <tbody>
@@ -21,7 +20,7 @@
                 <th>Altura</th>
                 <th>Peso</th>
             </tr>
-            <aura:iteration items="{!v.listaBoxeadores}" var="boxeador"> <!--Iteramos entre el array con los strings-->
+            <aura:iteration items="{!v.listaBoxeadores}" var="boxeador">
                 <tr>
                     <td>{!boxeador.nombre}</td>
                     <td>{!boxeador.apellido}</td>
@@ -35,9 +34,15 @@
     </table>
     <br></br>
     <div>
-        <lightning:button label="Guardar Boxeadores en BD" onclick="{!c.guardarBoxeador}" />
-        <lightning:button label="Borrar Boxeadores en BD" onclick="{!c.borrarBoxeadores}" />
-        <lightning:button label="Listar Boxeadores por consola" onclick="{!c.listarBoxeadores}" />
+        <div style="margin-right: 10px; display: inline-block;">
+            <lightning:button label="Guardar Boxeadores en BD" onclick="{!c.guardarBoxeador}" />
+        </div>
+        <div style="margin-right: 10px; display: inline-block;">
+            <lightning:button label="Borrar Boxeadores en BD" onclick="{!c.borrarBoxeadores}" />
+        </div>
+        <div style="display: inline-block;">
+            <lightning:button label="Listar Boxeadores por consola" onclick="{!c.listarBoxeadores}" />
+        </div>
     </div>
     <br></br>
     <p>Boxeadores en BD:</p>
@@ -52,7 +57,6 @@
                 <th>Peso</th>
             </tr>
             <aura:iteration items="{!v.listaBoxeadoresBD}" var="boxeador">
-                <!--Iteramos entre el array con los strings-->
                 <tr>
                     <td>{!boxeador.BillingStreet}</td>
                     <td>{!boxeador.BillingCity}</td>
@@ -64,6 +68,4 @@
             </aura:iteration>
         </tbody>
     </table>
-
-
 </aura:component>

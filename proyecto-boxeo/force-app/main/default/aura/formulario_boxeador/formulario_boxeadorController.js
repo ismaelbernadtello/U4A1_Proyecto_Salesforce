@@ -2,8 +2,7 @@
     myAction : function(component, event, helper) {
 
     },
-    guardarBoxeador : function(component, event, helper) {
-        
+    guardarBoxeador : function(component, event, helper) { //Funcion que pasa los datos del boxeador al evento
         // Obtener los valores de los campos desde la vista
         var nombre = component.get("v.nombre");
         var apellido = component.get("v.apellido");
