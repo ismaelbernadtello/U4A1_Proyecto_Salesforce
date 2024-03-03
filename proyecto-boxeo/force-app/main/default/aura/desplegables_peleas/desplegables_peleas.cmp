@@ -1,0 +1,35 @@
+<aura:component controller="RepoApex">
+    <!--Handler que carga los boxeadores grabados en la base de datos-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:attribute name="listaBoxeadoresBD" type="Object[]" />
+    <aura:attribute name="peleador1" type="String" />
+    <aura:attribute name="peleador2" type="String" />
+    <aura:attribute name="ganador" type="String" />
+
+    <hr>
+    </hr>
+
+    <lightning:select name="peleador1" label="Esquina Azul" value="{!v.peleador1}">
+        <option value="">Selecciona el peleador 1</option>
+        <aura:iteration items="{!v.listaBoxeadoresBD}" var="boxeador">
+            <option value="{!boxeador.BillingStreet}">{!boxeador.BillingStreet}</option>
+        </aura:iteration>
+    </lightning:select>
+
+    <lightning:select name="peleador2" label="Esquina Roja" value="{!v.peleador2}">
+        <option value="">Selecciona el peleador 2</option>
+        <aura:iteration items="{!v.listaBoxeadoresBD}" var="boxeador">
+            <option value="{!boxeador.BillingStreet}">{!boxeador.BillingStreet}</option>
+        </aura:iteration>
+    </lightning:select>
+
+    <lightning:select name="ganador" label="Ganador" value="{!v.ganador}">
+        <option value="">Selecciona el ganador</option>
+        <option value="{!v.peleador1}">{!v.peleador1}</option>
+        <option value="{!v.peleador2}">{!v.peleador2}</option>
+    </lightning:select>
+
+    <lightning:button label="Guardar Pelea en BD" onclick="{!c.guardarPelea}" />
+
+</aura:component>

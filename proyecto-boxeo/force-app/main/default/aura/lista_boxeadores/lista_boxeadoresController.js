@@ -82,13 +82,23 @@
                 "peso": listaBoxeadoresSesion[i].peso,
                 "altura": listaBoxeadoresSesion[i].altura
             });
-            
             $A.enqueueAction(insertarBoxeador); //Metemos en la cola de acciones el metodo insertStr del controlador de Apex
         }
     },
 
 
     borrarBoxeadores : function(component, event, helper) {
-        
+        var borrarBoxeadores = component.get("c.borrarTodosLosBoxeadores");
+
+        borrarBoxeadores.setCallback(this, function(response){
+            var state = response.getState();
+            if(state === "SUCCESS"){
+                console.log("Success");
+            }else{
+                console.log(response.getError());
+            }
+        });
+        $A.enqueueAction(borrarBoxeadores);
     }
+    
 })
