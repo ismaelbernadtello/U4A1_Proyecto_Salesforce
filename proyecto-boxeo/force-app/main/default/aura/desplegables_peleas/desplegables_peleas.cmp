@@ -3,33 +3,57 @@
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
     <aura:attribute name="listaBoxeadoresBD" type="Object[]" />
-    <aura:attribute name="peleador1" type="String" />
-    <aura:attribute name="peleador2" type="String" />
+    <aura:attribute name="boxeador1" type="String" />
+    <aura:attribute name="boxeador2" type="String" />
     <aura:attribute name="ganador" type="String" />
+
+    <aura:attribute name="listaPeleas" type="Object[]" />
 
     <hr>
     </hr>
 
-    <lightning:select name="peleador1" label="Esquina Azul" value="{!v.peleador1}">
+    <lightning:select name="peleador1" label="Esquina Azul" value="{!v.boxeador1}">
         <option value="">Selecciona el peleador 1</option>
         <aura:iteration items="{!v.listaBoxeadoresBD}" var="boxeador">
             <option value="{!boxeador.BillingStreet}">{!boxeador.BillingStreet}</option>
         </aura:iteration>
     </lightning:select>
 
-    <lightning:select name="peleador2" label="Esquina Roja" value="{!v.peleador2}">
+    <lightning:select name="peleador2" label="Esquina Roja" value="{!v.boxeador2}">
         <option value="">Selecciona el peleador 2</option>
         <aura:iteration items="{!v.listaBoxeadoresBD}" var="boxeador">
             <option value="{!boxeador.BillingStreet}">{!boxeador.BillingStreet}</option>
         </aura:iteration>
     </lightning:select>
 
-    <lightning:select name="ganador" label="Ganador" value="{!v.ganador}">
+    <lightning:select name="opciones" label="Ganador" value="{!v.ganador}">
         <option value="">Selecciona el ganador</option>
-        <option value="{!v.peleador1}">{!v.peleador1}</option>
-        <option value="{!v.peleador2}">{!v.peleador2}</option>
+        <option value="Esquina Azul">{!v.boxeador1}</option>
+        <option value="Esquina Roja">{!v.boxeador2}</option>
     </lightning:select>
 
-    <lightning:button label="Guardar Pelea en BD" onclick="{!c.guardarPelea}" />
+    <div>
+        <lightning:button label="Guardar Pelea en BD" onclick="{!c.guardarPelea}" />
+        <lightning:button label="Guardar Pelea en BD" onclick="{!c.borrarPeleas}" />
+    </div>
+    <br></br>
+
+    <p>Peleas en BD:</p>
+    <table style="border-spacing: 10px;">
+        <tbody>
+            <tr>
+                <th>Esquina Azul</th>
+                <th>Esquina Azul</th>
+                <th>Ganador</th>
+            </tr>
+            <aura:iteration items="{!v.listaPeleas}" var="pelea">
+                <tr>
+                    <td>{!pelea.BillingStreet}</td>
+                    <td>{!pelea.BillingCity}</td>
+                    <td>{!pelea.BillingState}</td>
+                </tr>
+            </aura:iteration>
+        </tbody>
+    </table>
 
 </aura:component>
