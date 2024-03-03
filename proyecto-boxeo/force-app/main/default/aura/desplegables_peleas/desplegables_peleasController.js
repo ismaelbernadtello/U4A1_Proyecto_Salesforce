@@ -39,10 +39,6 @@
     guardarPelea : function(component, event, helper) {
         var insertarPelea = component.get("c.insertarPelea");
 
-        alert('Boxeador 1: ' + component.get("v.boxeador1"));
-        alert('Boxeador 2: ' + component.get("v.boxeador2"));
-        alert('Ganador: ' + component.get("v.ganador"));
-        
         insertarPelea.setCallback(this, function(response){
             var state = response.getState();
             if(state === "SUCCESS"){
@@ -59,6 +55,21 @@
         });
 
         $A.enqueueAction(insertarPelea);
+    },
+
+    borrarPeleas : function(component, event, helper) {
+        var borrarPeleasC = component.get("c.borrarTodasLasPeleas");
+
+        borrarPeleasC.setCallback(this, function(response){
+            var state = response.getState();
+            if(state === "SUCCESS"){
+                console.log('Peleas borradas correctamente');
+            }else{
+                console.log(response.getError());
+            }
+        });
+
+        $A.enqueueAction(borrarPeleasC);
     }
 
 })

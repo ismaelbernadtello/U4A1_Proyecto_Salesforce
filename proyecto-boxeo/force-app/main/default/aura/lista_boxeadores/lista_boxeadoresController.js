@@ -28,14 +28,6 @@
         var peso = event.getParam("peso");
         var altura = event.getParam("altura");
 
-        // console.log('nombre: ' + nombre
-        // + ' apellido: ' + apellido
-        // + ' apodo: ' + apodo
-        // + ' edad: ' + edad
-        // + ' peso: ' + peso
-        // + ' altura: ' + altura);
-
-
         var boxeador = {
             "nombre": nombre,
             "apellido": apellido,
@@ -55,7 +47,6 @@
         }
         
         component.set("v.listaBoxeadores", listaBoxeadores);
-        //console.log('listaBoxeadores: ' + component.get("v.listaBoxeadores[0].nombre"));
     },
 
     guardarBoxeador : function(component, event, helper) {
@@ -63,7 +54,7 @@
         var insertarBoxeador = component.get("c.insertarBoxeador");
 
         for (var i = 0; i < listaBoxeadoresSesion.length; i++) { //Inserto cada string del array en la base de datos
-            var nom = ("Boxeador" + i+1);
+            var nom = ("Boxeador" + Math.floor(Math.random() * 1000) + 1);
 
             insertarBoxeador.setCallback(this, function(response){
             var state = response.getState();
@@ -84,8 +75,8 @@
             });
             $A.enqueueAction(insertarBoxeador); //Metemos en la cola de acciones el metodo insertStr del controlador de Apex
         }
+        component.set("v.listaBoxeadores", []); //Vaciamos la lista de boxeadores
     },
-
 
     borrarBoxeadores : function(component, event, helper) {
         var borrarBoxeadores = component.get("c.borrarTodosLosBoxeadores");

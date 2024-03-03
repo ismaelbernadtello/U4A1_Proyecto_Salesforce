@@ -71,4 +71,14 @@ public with sharing class RepoApex {
         }
     }
 
+    @AuraEnabled /*Método que borra todas las peleas de la base de datos.*/
+    public static void borrarTodasLasPeleas(){
+        try {
+            List<Account> peleas = [SELECT Id FROM Account WHERE Name = 'Pelea'];
+            delete peleas;
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+
 }
