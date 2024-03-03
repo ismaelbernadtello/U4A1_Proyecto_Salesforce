@@ -37,6 +37,7 @@
     <div>
         <lightning:button label="Guardar Boxeadores en BD" onclick="{!c.guardarBoxeador}" />
         <lightning:button label="Borrar Boxeadores en BD" onclick="{!c.borrarBoxeadores}" />
+        <lightning:button label="Listar Boxeadores por consola" onclick="{!c.listarBoxeadores}" />
     </div>
     <br></br>
     <p>Boxeadores en BD:</p>

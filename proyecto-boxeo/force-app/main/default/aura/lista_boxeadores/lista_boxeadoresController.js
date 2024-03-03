@@ -18,7 +18,7 @@
         });
         $A.enqueueAction(getListaRegistros);
     },
-
+    
     handleGuardarBoxeadorEvent : function(component, event, helper) {
         // console.log('Llega a: handleGuardarBoxeadorEvent');
         var nombre = event.getParam("nombre");
@@ -90,6 +90,24 @@
             }
         });
         $A.enqueueAction(borrarBoxeadores);
+    },
+
+    listarBoxeadores : function(component, event, helper) {
+        var listaBoxeadoresConsola = component.get("v.listaBoxeadoresBD");
+
+        for (var i = 0; i < listaBoxeadoresConsola.length; i++) {
+            (function(index) {
+                setTimeout(function() {
+                    console.log('Boxeador ' + (index + 1) + ' de la lista : ' 
+                                                                        + 'Nombre: ' + listaBoxeadoresConsola[index].BillingStreet 
+                                                                        + ' Apellido: ' + listaBoxeadoresConsola[index].BillingCity 
+                                                                        + ' Apodo: ' + listaBoxeadoresConsola[index].BillingState 
+                                                                        + ' Edad: ' + listaBoxeadoresConsola[index].BillingCountry 
+                                                                        + ' Peso: ' + listaBoxeadoresConsola[index].ShippingStreet 
+                                                                        + ' Altura: ' + listaBoxeadoresConsola[index].ShippingCountry);
+                }, 1000 * (index + 1)); // Esperar 1 segundo entre cada console.log
+            })(i);
+        }
     }
     
 })
